@@ -1,532 +1,333 @@
-# 🎨 CanvasCraft — Interactive Drawing Board
+# 📄 ProResume — ATS-Friendly Resume Builder
 
-### A Browser-Based Digital Drawing Application Powered by HTML5 Canvas
+### Build. Preview. Analyze. Export.
 
-**CanvasCraft** is a lightweight, interactive drawing board built using **HTML5 Canvas, CSS3, and Vanilla JavaScript**.
+**ProResume** is a browser-based resume builder designed to help users create professional, structured, and ATS-oriented resumes through an interactive editing experience.
 
-It allows users to draw freely on a digital canvas, change brush colors and sizes, erase content, draw rectangles, clear the canvas, and download their artwork as a PNG image.
+The application provides a **live resume preview**, multiple resume templates, completion tracking, ATS-oriented scoring, dark mode, reset functionality, and **client-side PDF export**.
 
-The project demonstrates practical usage of the **Canvas API, mouse events, DOM manipulation, event-driven programming, and client-side image export**.
+Built with **HTML, CSS, and Vanilla JavaScript**, ProResume demonstrates practical frontend development concepts including DOM manipulation, dynamic rendering, state management, responsive UI design, and browser-based PDF generation.
 
 ---
 
 ## 🌐 Live Demo
 
-🚀 **[Open CanvasCraft](https://gfg-project-8.vercel.app/)**
+🚀 **[Try ProResume](https://gfg-projects-6.vercel.app/)**
 
 ---
 
-# ✨ Features
+## ✨ Features
 
-## 🖊️ Freehand Drawing
+### 📝 Interactive Resume Builder
 
-Draw freely on the canvas using the mouse.
+ProResume provides a structured editor where users can enter their professional information and build their resume through an interactive interface.
 
-The application tracks:
+Users can manage information such as:
 
-* Mouse press
-* Mouse movement
-* Mouse release
-
-to create smooth continuous strokes.
+* Personal information
+* Education
+* Skills
+* Experience
+* Projects
+* Other professional details
 
 ---
 
-## 🎨 Color Picker
+### 👀 Live Resume Preview
 
-Choose any drawing color using the built-in HTML color picker.
+The resume preview updates while the user works on the resume.
 
 ```text
-Color: 🎨 #000000
+┌──────────────────────┬──────────────────────────────┐
+│                      │                              │
+│    RESUME EDITOR     │       LIVE PREVIEW           │
+│                      │                              │
+│  Personal Info       │   ┌──────────────────────┐  │
+│  Education           │   │                      │  │
+│  Experience          │   │      PRORESUME       │  │
+│  Projects            │   │                      │  │
+│  Skills              │   │       RESUME         │  │
+│                      │   │                      │  │
+│                      │   └──────────────────────┘  │
+└──────────────────────┴──────────────────────────────┘
 ```
 
-The selected color is automatically applied to subsequent pen strokes.
+This allows users to immediately see how their resume will look while editing it.
 
 ---
 
-## 📏 Adjustable Brush Size
+## 🎨 Multiple Resume Templates
 
-Control the thickness of the drawing brush using a range slider.
+ProResume includes template selection functionality that allows users to change the visual presentation of their resume.
+
+The same resume information can be presented using different template styles.
+
+---
+
+## 🤖 ATS-Oriented Score
+
+ProResume includes an ATS-oriented scoring feature that provides users with a percentage-based indication of their resume's completeness and keyword-oriented content.
+
+The application provides:
+
+* Overall ATS score
+* Visual score indicator
+* Feedback
+* Score breakdown
+* Improvement suggestions
+
+Example:
 
 ```text
-Brush Size
+             ATS SCORE
 
-1px ───────────────●────────────── 20px
+               82%
+
+        ────────────────
+        Resume Analysis
+
+        ✓ Required sections
+        ✓ Skills detected
+        ⚠ Improve keywords
 ```
 
-The brush width is dynamically updated according to the selected value.
+> **Note:** The ATS score is a heuristic analysis provided by the application. It does not guarantee how a particular company's Applicant Tracking System will evaluate a resume.
 
 ---
 
-## 🧽 Eraser Tool
+## 📊 Resume Completion Tracking
 
-Switch from drawing mode to eraser mode to remove existing strokes.
+ProResume tracks the completion status of the resume.
 
-The eraser works by drawing using the canvas background color.
-
----
-
-## ▭ Rectangle / Square Tool
-
-CanvasCraft allows users to create rectangular shapes by:
-
-1. Selecting the **Square** tool.
-2. Clicking and holding on the canvas.
-3. Moving the mouse.
-4. Releasing the mouse.
-
-The application calculates the starting and ending coordinates and draws the rectangle dynamically.
-
----
-
-## 🧹 Clear Canvas
-
-The **Clean** button removes everything from the canvas.
-
-```javascript
-ctx.clearRect(0, 0, canvas.width, canvas.height);
-```
-
-This provides a quick way to start a new drawing.
-
----
-
-## ⬇️ Download Drawing
-
-Users can save their artwork as a PNG image directly from the browser.
-
-The application converts the canvas into an image using:
-
-```javascript
-canvas.toDataURL("image/png");
-```
-
-and automatically downloads the generated image.
-
----
-
-# 🧠 How It Works
-
-CanvasCraft uses the HTML5 Canvas API as the main drawing surface.
+The dashboard provides information such as:
 
 ```text
-                    USER
-                      │
-                      ▼
-             ┌─────────────────┐
-             │  Select a Tool  │
-             └────────┬────────┘
-                      │
-          ┌───────────┼───────────┐
-          ▼           ▼           ▼
-        Pen         Eraser      Square
-          │           │           │
-          └───────────┼───────────┘
-                      ▼
-             ┌─────────────────┐
-             │ HTML5 CANVAS    │
-             │ 2D Rendering    │
-             └────────┬────────┘
-                      │
-          ┌───────────┴───────────┐
-          ▼                       ▼
-      Clear Canvas           Download PNG
+Sections       7
+Completion     85%
+```
+
+This helps users identify whether important resume sections still require information.
+
+---
+
+## 💾 Auto-Save Status
+
+The interface displays an auto-save status indicator.
+
+Example:
+
+```text
+● Auto-saved
+```
+
+This provides visual feedback to the user while working on the resume.
+
+---
+
+## 🌙 Dark Mode
+
+ProResume provides a dark mode option for the application interface.
+
+Users can switch the application theme while creating their resume.
+
+---
+
+## 🔄 Reset Resume
+
+The **Reset** functionality allows users to restore the resume editor to its initial state.
+
+This is useful when users want to create a completely new resume.
+
+---
+
+## 📄 PDF Export
+
+Users can export their completed resume as a PDF directly from the browser.
+
+ProResume uses:
+
+* **html2canvas** to capture the resume preview
+* **jsPDF** to generate the PDF
+
+The entire process takes place on the client side.
+
+---
+
+## 🖼️ Preview Modes
+
+The preview workspace provides different background viewing modes, including:
+
+* Plain
+* Grid
+
+This makes it easier to distinguish the resume document from the editor workspace during development and editing.
+
+---
+
+# 🧠 How ProResume Works
+
+ProResume follows a client-side application architecture.
+
+```text
+                       USER
+                         │
+                         ▼
+                ┌─────────────────┐
+                │  Resume Editor  │
+                └────────┬────────┘
+                         │
+                         ▼
+                ┌─────────────────┐
+                │ JavaScript State│
+                └────────┬────────┘
+                         │
+              ┌──────────┼──────────┐
+              ▼          ▼          ▼
+        ┌──────────┐ ┌────────┐ ┌───────────┐
+        │  Live    │ │  ATS   │ │ Templates │
+        │ Preview  │ │ Score  │ │           │
+        └────┬─────┘ └────────┘ └───────────┘
+             │
+             ▼
+       ┌──────────────┐
+       │ PDF Export   │
+       └──────────────┘
+```
+
+The application manages the resume information through JavaScript and dynamically updates the preview based on the current data.
+
+---
+
+# 🏗️ Application Architecture
+
+```text
+┌─────────────────────────────────────────────┐
+│                  ProResume                  │
+├─────────────────────────────────────────────┤
+│                                             │
+│  ┌──────────────────┐  ┌─────────────────┐ │
+│  │   Editor Panel   │  │ Preview Panel   │ │
+│  │                  │  │                 │ │
+│  │ Personal Info    │  │ Live Resume     │ │
+│  │ Education        │  │                 │ │
+│  │ Experience       │  │ A4 Preview      │ │
+│  │ Projects         │  │                 │ │
+│  │ Skills           │  │                 │ │
+│  └────────┬─────────┘  └────────▲────────┘ │
+│           │                     │          │
+│           └────── JavaScript ───┘          │
+│                       │                    │
+│          ┌────────────┼────────────┐       │
+│          ▼            ▼            ▼       │
+│       ATS Score    Templates    PDF Export │
+│                                             │
+└─────────────────────────────────────────────┘
 ```
 
 ---
 
 # 🛠️ Tech Stack
 
-| Technology           | Purpose                      |
-| -------------------- | ---------------------------- |
-| **HTML5**            | Application structure        |
-| **CSS3**             | User interface and styling   |
-| **JavaScript ES6+**  | Application logic            |
-| **HTML5 Canvas API** | Drawing and rendering        |
-| **DOM API**          | Element and event management |
-| **Mouse Events**     | Drawing interactions         |
-| **Vercel**           | Deployment                   |
-
----
-
-# 🏗️ Project Architecture
-
-CanvasCraft follows a simple client-side architecture:
-
-```text
-┌──────────────────────────────┐
-│          HTML5 UI            │
-│                              │
-│ Color | Brush | Tools        │
-└──────────────┬───────────────┘
-               │
-               ▼
-┌──────────────────────────────┐
-│       JavaScript Logic       │
-│                              │
-│ Event Handling               │
-│ Tool State                   │
-│ Drawing Logic                │
-│ Canvas Operations            │
-└──────────────┬───────────────┘
-               │
-               ▼
-┌──────────────────────────────┐
-│       Canvas 2D Context      │
-│                              │
-│ Lines / Rectangles / Erasing │
-└──────────────────────────────┘
-```
+| Technology          | Purpose                   |
+| ------------------- | ------------------------- |
+| **HTML5**           | Application structure     |
+| **CSS3**            | Styling and responsive UI |
+| **JavaScript ES6+** | Application logic         |
+| **HTML DOM API**    | Dynamic UI manipulation   |
+| **html2canvas**     | Capture resume preview    |
+| **jsPDF**           | Generate downloadable PDF |
+| **Google Fonts**    | Application typography    |
+| **Vercel**          | Deployment                |
 
 ---
 
 # 📂 Project Structure
 
 ```text
-CanvasCraft/
+ProResume/
 │
-├── index.html       # Application structure
-├── style.css        # Styling and UI
-├── app.js           # Drawing and interaction logic
+├── index.html       # Main application structure
+├── style.css        # Styling and responsive layout
+├── app.js           # Resume builder logic
 └── README.md        # Project documentation
 ```
 
-The current repository contains the core HTML, CSS, and JavaScript implementation for the drawing application.
+The current application is implemented as a lightweight frontend project without a dedicated backend or database.
 
 ---
 
-# ⚙️ Core Implementation
+# ⚙️ Core Functionalities
 
-## 1. Canvas Initialization
+## 1. Resume Data Management
 
-The application obtains the 2D rendering context:
+The application manages the information entered by the user and uses it to generate the resume preview.
 
-```javascript
-const ctx = canvas.getContext("2d");
-```
-
-and initializes the canvas dimensions:
-
-```javascript
-canvas.height = 420;
-canvas.width = 800;
-```
-
-The drawing configuration includes:
-
-```javascript
-ctx.strokeStyle = colorPicker.value;
-ctx.lineWidth = brushSizeSelector.value;
-ctx.lineCap = "round";
-```
-
-This creates rounded, smoother line endings.
-
----
-
-## 2. Freehand Drawing
-
-The drawing process is divided into three stages:
+The general workflow is:
 
 ```text
-mousedown
+User Input
     ↓
-mousemove
+Resume Data
     ↓
-mouseup
-```
-
-### Start Drawing
-
-When the mouse button is pressed, the application starts a new path:
-
-```javascript
-ctx.beginPath();
-ctx.moveTo(e.offsetX, e.offsetY);
-```
-
-### Draw
-
-While the mouse moves, the application continuously creates line segments:
-
-```javascript
-ctx.lineTo(e.offsetX, e.offsetY);
-ctx.stroke();
-```
-
-### Stop Drawing
-
-When the mouse button is released, drawing mode is disabled.
-
-This event-driven approach creates the freehand drawing experience.
-
----
-
-# 🧩 Tool State Management
-
-CanvasCraft maintains internal state variables to determine the active drawing mode:
-
-```javascript
-let isDrawing = false;
-let currentTool = "pen";
-let isDrawingSquare = false;
-```
-
-These variables determine whether the application should:
-
-* Draw freehand
-* Erase
-* Draw a rectangle
-
-This is a simple example of **state management using JavaScript variables**.
-
----
-
-# 🖊️ Pen Tool
-
-When the Pen tool is selected:
-
-```javascript
-currentTool = "pen";
-```
-
-the selected color from the color picker is used for drawing.
-
-The Pen button is also visually marked as active through CSS classes.
-
----
-
-# 🧽 Eraser Tool
-
-The Eraser changes the current tool:
-
-```javascript
-currentTool = "eraser";
-```
-
-During drawing, the application uses the canvas background color instead of the selected drawing color:
-
-```javascript
-ctx.strokeStyle =
-    currentTool == "eraser"
-    ? "#ffffff"
-    : colorPicker.value;
-```
-
-This produces the erasing effect.
-
----
-
-# ▭ Rectangle Drawing
-
-The rectangle tool stores the initial mouse coordinates:
-
-```javascript
-startX = e.offsetX;
-startY = e.offsetY;
-```
-
-When the mouse is released, the ending coordinates are calculated:
-
-```javascript
-let width = endX - startX;
-let height = endY - startY;
-```
-
-The rectangle is then rendered using:
-
-```javascript
-ctx.rect(startX, startY, width, height);
-ctx.stroke();
+JavaScript Processing
+    ↓
+Resume Rendering
+    ↓
+Live Preview
 ```
 
 ---
 
-# 📥 Download System
+## 2. Live Preview Rendering
 
-CanvasCraft provides client-side image export.
+The preview is dynamically updated according to the resume information entered by the user.
 
-The canvas is converted into a PNG data URL:
+This removes the need to manually refresh the page after every change.
 
-```javascript
-let canvasImage = canvas.toDataURL("image/png");
-```
+---
 
-A temporary `<a>` element is then created to trigger the download.
+## 3. Template Selection
 
-The exported file is named:
+The template selection system allows users to change the presentation style of the generated resume.
 
 ```text
-WhiteBoard.png
+Select Template
+       ↓
+Template State
+       ↓
+Update Resume Layout
+       ↓
+Render Preview
 ```
 
 ---
 
-# 🚀 Getting Started
+## 4. ATS Analysis
 
-## Prerequisites
+The ATS analysis system evaluates resume content and generates an application-specific score.
 
-No backend, database, or package manager is required.
-
-You only need:
-
-* A modern web browser
-* Git
-* VS Code or another code editor
-
----
-
-## 1. Clone the Repository
-
-```bash
-git clone https://github.com/SumitHelge-star/GFG-PROJECT-8.git
-```
-
----
-
-## 2. Navigate to the Project
-
-```bash
-cd GFG-PROJECT-8
-```
-
----
-
-## 3. Run the Application
-
-Because CanvasCraft is a static frontend application, you can open:
+The process can be represented as:
 
 ```text
-index.html
+Resume Content
+      ↓
+Content Analysis
+      ↓
+Section / Keyword Checks
+      ↓
+Score Calculation
+      ↓
+ATS Score + Feedback
 ```
 
-directly in your browser.
-
-For development, **VS Code Live Server** is recommended.
+The score should be treated as an informational heuristic rather than an actual ATS prediction.
 
 ---
 
-# 🎯 Learning Outcomes
+## 5. Completion Tracking
 
-This project demonstrates several important frontend development concepts.
-
-### HTML
-
-* Semantic structure
-* Form controls
-* Buttons
-* Canvas element
-
-### CSS
-
-* Layout design
-* Tool styling
-* Active-state styling
-* Responsive UI concepts
-
-### JavaScript
-
-* DOM manipulation
-* Event listeners
-* State management
-* Mouse events
-* Conditional logic
-* Dynamic Canvas rendering
-* Client-side file generation
-
-### Canvas API
-
-* `getContext()`
-* `beginPath()`
-* `moveTo()`
-* `lineTo()`
-* `stroke()`
-* `rect()`
-* `clearRect()`
-* `toDataURL()`
-
----
-
-# 🔮 Future Improvements
-
-The current application can be extended into a more complete browser-based drawing editor.
-
-### 🎨 Drawing Features
-
-* Circle and triangle tools
-* Filled shapes
-* Line tool
-* Arrow tool
-* Text tool
-* Custom brush styles
-* Opacity control
-
-### ↩️ Editing Features
-
-* Undo / Redo
-* Clear confirmation
-* Select and move objects
-* Resize shapes
-* Copy / paste
-* Drawing history
-
-### 📱 User Experience
-
-* Touch-screen support
-* Mobile responsive canvas
-* Keyboard shortcuts
-* Dark/light mode
-* Improved toolbar
-* Color palette presets
-
-### 💾 Export
-
-* JPG export
-* WebP export
-* Custom filename
-* Export quality selection
-* Canvas size customization
-
----
-
-# 🌟 Project Highlights
+ProResume calculates the user's progress while completing the resume.
 
 ```text
-🎨 Interactive Drawing Board
-🖊️ Freehand Pen
-🧽 Eraser
-▭ Rectangle Tool
-🎨 Custom Color Picker
-📏 Adjustable Brush Size
-🧹 Clear Canvas
-⬇️ PNG Download
-⚡ Client-Side Processing
-🖥️ HTML5 Canvas
-📱 Browser-Based
+Resume Sec
 ```
-
----
-
-# 👨‍💻 Author
-
-## Sumit Helge
-
-**Computer Science & Engineering**
-
-Full-Stack Developer | Generative AI | Software Engineering
-
-### GitHub
-
-https://github.com/SumitHelge-star
-
----
-
-# 📄 License
-
-This project is available for educational and personal use.
-
----
-
-## 🎨 CanvasCraft
-
-> **Draw. Create. Express. — Directly in your browser.**
